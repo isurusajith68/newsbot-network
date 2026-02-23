@@ -182,7 +182,6 @@ function generateArticle(): ArticleData {
     RESEARCH_GOAL: 'identify patterns and correlations that weren\'t apparent in smaller studies',
     IMPLICATION_1: 'accelerated investment in AI education and training programs',
     IMPLICATION_2: 'reassessment of market opportunity timelines',
-    INDUSTRY: 'technology',
     PROCESS: 'talent development and technology deployment',
     LIMITATION_1: 'the study focused primarily on North American and European markets',
     LIMITATION_2: 'long-term effects remain to be seen',
