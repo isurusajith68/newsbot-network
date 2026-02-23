@@ -15,7 +15,7 @@
     "react-dom": "^18",
     "lucide-react": "^0.344.0",
     "date-fns": "^3.3.1",
-    "cheerio": "^1.0.0-rc.12"
+    "cheerio": "^1.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -28,6 +28,6 @@
     "tailwindcss": "^3.3.0",
     "typescript": "^5",
     "tsx": "^4.7.0",
-    "@types/cheerio": "^0.22.38"
+    "@types/cheerio": "^1.0.0"
   }
 }
