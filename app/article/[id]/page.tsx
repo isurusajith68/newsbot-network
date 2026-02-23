@@ -243,8 +243,8 @@ function formatContent(content: string): string {
       return `<p>${paragraph}</p>`
     })
     .join('')
-    .replace(/<ul><li>(.*?)<\/li><\/ul>/g, (match, content) => {
-      const items = content.split('\n• ').map(item => `<li>${item}</li>`).join('')
+    .replace(/<ul><li>(.*?)<\/li><\/ul>/g, (match: string, content: string) => {
+      const items = content.split('\n• ').map((item: string) => `<li>${item}</li>`).join('')
       return `<ul>${items}</ul>`
     })
 }
