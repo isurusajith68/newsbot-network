@@ -1,0 +1,73 @@
+name: Generate Daily Article
+
+on:
+  schedule:
+    # Run daily at 00:00 UTC
+    - cron: '0 0 * * *'
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  generate-article:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Generate new article
+      run: npm run generate-article
+      env:
+        # Add any API keys for AI services here
+        # OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        # ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git commit -m "🤖 Auto-generated article for $(date +'%Y-%m-%d')" || echo "No changes to commit"
+        git push
+    
+    - name: Trigger Vercel Deployment
+      run: |
+        # Trigger Vercel deployment via webhook
+        if [ -n "${{ secrets.VERCEL_DEPLOY_HOOK }}" ]; then
+          curl -X POST ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        fi
+    
+    - name: Post to Social Media (Optional)
+      if: ${{ false }}  # Disabled by default
+      run: |
+        # Example: Post to Twitter via API
+        # curl -X POST https://api.twitter.com/2/tweets \
+        #   -H "Authorization: Bearer ${{ secrets.TWITTER_BEARER_TOKEN }}" \
+        #   -H "Content-Type: application/json" \
+        #   -d '{"text": "New AI-generated article published! Check it out: https://ai-news-daily.vercel.app"}'
+        echo "Social media posting disabled"
+
+  deploy:
+    needs: generate-article
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+    - name: Deploy to Vercel
+      if: ${{ needs.generate-article.result == 'success' }}
+      uses: amondnet/vercel-action@v25
+      with:
+        vercel-token: ${{ secrets.VERCEL_TOKEN }}
+        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        vercel-args: '--prod'

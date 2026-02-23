@@ -1,0 +1,15 @@
+[
+  {
+    "id": "test-article-1",
+    "title": "NewsBot Network Launches: AI-Powered News Goes Live",
+    "excerpt": "The NewsBot Network has officially launched, bringing daily AI-generated news to readers worldwide.",
+    "content": "Today marks the official launch of NewsBot Network, an innovative platform that delivers AI-generated news articles daily. The network leverages advanced artificial intelligence to analyze trends and produce relevant content across technology, business, and innovation sectors.\n\nKey features of NewsBot Network include:\n• Daily automated article generation\n• SEO-optimized content structure\n• Google AdSense integration for monetization\n• Responsive design for all devices\n\nFounder Isuru Sajith stated: 'NewsBot Network represents the future of automated content creation. By combining AI technology with strategic monetization, we're creating a sustainable model for digital publishing.'\n\nThe platform uses a combination of template-based generation and AI APIs to ensure content quality while maintaining daily publication schedules. Early tests show promising engagement metrics, with readers appreciating the consistent flow of fresh content.\n\nLooking ahead, the NewsBot Network team plans to expand into additional news categories and integrate more advanced AI models for enhanced content quality.",
+    "category": "Technology",
+    "author": "NewsBot Reporter",
+    "date": "2026-02-24",
+    "readTime": "3 min",
+    "imageUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800",
+    "tags": ["Launch", "AI", "News", "Technology", "Innovation"],
+    "views": 1250
+  }
+]
